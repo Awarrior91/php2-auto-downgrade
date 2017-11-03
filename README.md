@@ -23,14 +23,17 @@ You need a fully qualified domain name.
 # The arguments
 
 -e YOUREMAILADDRESS
+
 Your E-Mail so that the tracking server can send you alerts about downtimes
 
 
 -f DOMAINNAME
+
 Your Domain Name
 
 
 -r REGIONCODE
+
 Region Codes are:
 
 eu for Europe
