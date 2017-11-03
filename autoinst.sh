@@ -51,7 +51,7 @@ tlskeypath=/home/$USER/.acme.sh/$FQDN/$FQDN.key
 EOF
 sudo cp /home/$USER/.acme.sh/$FQDN/ca.cer /usr/share/ca-certificates/ca.crt
 zend
-sleep 10
+sleep 8
 zen-cli z_getnewaddress
 sudo apt -y install npm
 sudo npm install -g n
@@ -63,7 +63,7 @@ npm install
 TADDR=$(zen-cli getnewaddress)
 sudo dpkg-reconfigure ca-certificates
 zen-cli stop
-sleep 10
+sleep 5
 zend
 echo "Copy+Paste for the super lazy (me)!"
 echo $EMAIL
