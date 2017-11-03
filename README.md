@@ -1,6 +1,7 @@
 # seczennode-automate-install
 
 # This is still in testing
+# Dont run this as root!
 
 This script aims to automate the installation of a Secure Node for ZenCash.
 
