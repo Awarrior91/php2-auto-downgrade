@@ -23,9 +23,9 @@ You need a fully qualified domain name.
 
 # The arguments
 
--t 
+-t #
 
-Add this if you want to set up your node in Testnet. This option should be used until nodes are going to mainnet
+For Testnet, add 1 for #, for Mainnet add 0 for #. 
 
 -e YOUREMAILADDRESS
 
