@@ -113,36 +113,7 @@ sudo npm install pm2 -g
 pm2 start app.js --name securenodetracker
 pm2 startup | grep sudo | sh -
 sudo apt install monit
-echo <<EOF > ~/zen_node.sh
-#!/bin/bash
-
-PID_FILE='/home/$USER/.zen/zen_node.pid'
-
-start() {
-       touch $PID_FILE
-        eval "/bin/su $USER -c '/usr/bin/zend 2>&1 >> /dev/null'"
-       PID=$(ps aux | grep zend | grep -v grep | awk '{print $2}')
-       echo "Starting zend with PID $PID"
-       echo $PID > $PID_FILE
-}
-stop () {
-       pkill zend
-       rm $PID_FILE
-       echo "Stopping zend"
-}
-
-case $1 in
-    start)
-       start
-       ;;
-    stop)  
-       stop
-       ;;
-     *)  
-       echo "usage: zend {start|stop}" ;;
- esac
- exit 0
-EOF
+cp ~/seczennode-automate-install/zen_node.sh ~/zen_node.sh
 sudo chmod u+x ~/zen_node.sh
 sudo chown $USER:$USER /etc/monit/monitrc
 sudo cat <<EOF >> /etc/monit/monitrc   
