@@ -25,7 +25,7 @@ You need a fully qualified domain name.
 
 -t #
 
-For Testnet, add 1 for #, for Mainnet add 0 for #. 
+For Testnet, add 1 for #, for Mainnet add 0 for #. Nodes currently only working in Testnet
 
 -e YOUREMAILADDRESS
 
