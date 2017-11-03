@@ -11,9 +11,9 @@ The script will set up a firewall (ufw) for you.
 
 Then it'll install fail2ban and rkhunter.
 
-After that it installs zend from https://github.com/ZenCashOfficial.
+After that it installs zend from https://github.com/ZenCashOfficial/zen
 
-Then it installs the Tracker from https://github.com/ZenCashOfficial.
+Then it installs the Tracker from https://github.com/ZencashOfficial/secnodetracker
 
 You will need a fully qualified domain name.
 
