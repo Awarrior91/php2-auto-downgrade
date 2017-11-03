@@ -29,9 +29,9 @@ sleep 1
 sudo ufw allow 9033/tcp
 sleep 1
 if $TNET=1
-do
+ then
 sudo ufw allow 19033/tcp
-done
+fi
 sleep 1
 sudo ufw logging on
 sleep 1
@@ -72,9 +72,9 @@ txindex=1
 logtimestamps=1
 EOF
 if $TNET='1'
-do
+ then
 echo 'testnet=1' >> ~/.zen/zen.conf
-done
+fi
 
 echo $FQDN
 sudo ~/.acme.sh/acme.sh --issue --standalone -d $FQDN
