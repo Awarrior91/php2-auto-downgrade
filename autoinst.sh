@@ -21,8 +21,7 @@ cd zen
 sudo cp ~/zencash/zen/src/zend /usr/bin/
 sudo cp ~/zencash/zen/src/zen-cli /usr/bin/
 zend
-sleep 10
-zen-cli stop
+sleep 1
 sudo apt install socat
 cd
 git clone https://github.com/Neilpang/acme.sh.git
@@ -62,7 +61,6 @@ git clone https://github.com/ZencashOfficial/secnodetracker.git
 cd secnodetracker
 npm install
 TADDR=$(zen-cli getnewaddress)
-cd ..
 sudo dpkg-reconfigure ca-certificates
 zen-cli stop
 sleep 10
