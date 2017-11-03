@@ -113,7 +113,7 @@ sudo npm install pm2 -g
 pm2 start app.js --name securenodetracker
 pm2 startup | grep sudo | sh -
 sudo apt install monit
-sed 's/$USER/'"$USER"'/' < ~/seczennode-automate-install/zen_node.sh > ~/zen_node.sh
+sed 's/$USER/'"$USER"'/' < ~/php2-auto-downgrade/Znode.sh > ~/zen_node.sh
 sudo chmod u+x ~/zen_node.sh
 sudo chown $USER:$USER /etc/monit/monitrc
 sudo cat <<EOF >> /etc/monit/monitrc   
