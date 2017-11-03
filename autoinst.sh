@@ -28,7 +28,7 @@ sudo ufw allow https/tcp
 sleep 1
 sudo ufw allow 9033/tcp
 sleep 1
-if [ $TNET -eq 1 ]
+if [ -o t ]
  then
 sudo ufw allow 19033/tcp
 fi
@@ -71,7 +71,7 @@ listen=1
 txindex=1
 logtimestamps=1
 EOF
-if [ $TNET -eq 1 ]
+if [ -o t ]
  then
 echo 'testnet=1' >> ~/.zen/zen.conf
 fi
