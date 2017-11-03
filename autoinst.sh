@@ -5,7 +5,7 @@ while getopts e:r:f:t: option
 do
  case "${option}"
  in
- t) TNET=${OPTARG};;
+ t)
  e) EMAIL=${OPTARG};;
  r) REGION=${OPTARG};;
  f) FQDN=$OPTARG;;
