@@ -17,6 +17,7 @@ Then it installs the Tracker from https://github.com/ZencashOfficial/secnodetrac
 # What do I need?
 
 To run a Secure Node, you will need at least 2 Cores(/vCores) and 4GB RAM.
+
 You need a fully qualified domain name.
 
 
