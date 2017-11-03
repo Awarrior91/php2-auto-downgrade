@@ -71,3 +71,8 @@ echo $TADDR
 echo $FQDN
 echo $REGION
 node setup.js
+echo "After setup.js completed, run 'screen -S tracker'. Then 'cd ~/zencash/secnodetracker' and then 'node app.js'"
+echo "To exit the screen (always do it this way) use 'CTRL + A + D'."
+echo "To check on the tracker, type 'screen -R tracker'.
+
+
