@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PID_FILE='/home/<USER>/.zen/zen_node.pid'
+PID_FILE='/home/$USER/.zen/zen_node.pid'
 
 start() {
        touch $PID_FILE
-       eval "/bin/su <USER> -c '/usr/bin/zend 2>&1 >> /dev/null'"
+       eval "/bin/su $USER -c '/usr/bin/zend 2>&1 >> /dev/null'"
        PID=$(ps aux | grep zend | grep -v grep | awk '{print $2}')
        echo "Starting zend with PID $PID"
        echo $PID > $PID_FILE
