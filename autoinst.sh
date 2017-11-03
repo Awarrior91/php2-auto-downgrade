@@ -1,11 +1,9 @@
 #!/bin/bash
-
-
 while getopts e:r:f:t: option
 do
  case "${option}"
  in
- t)
+ t) TNET=${OPTARG};;
  e) EMAIL=${OPTARG};;
  r) REGION=${OPTARG};;
  f) FQDN=$OPTARG;;
@@ -28,7 +26,7 @@ sudo ufw allow https/tcp
 sleep 1
 sudo ufw allow 9033/tcp
 sleep 1
-if [ -o t ]
+if [ $TNET -eq 0 ]
  then
 sudo ufw allow 19033/tcp
 fi
@@ -71,7 +69,7 @@ listen=1
 txindex=1
 logtimestamps=1
 EOF
-if [ -o t ]
+if [ $TNET -eq 0 ]
  then
 echo 'testnet=1' >> ~/.zen/zen.conf
 fi
