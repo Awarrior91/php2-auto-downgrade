@@ -7,7 +7,7 @@ This script aims to automate the installation of a Secure Node for ZenCash.
 
 To run a Secure Node, you will need at least 2 Cores(/vCores) and 4GB RAM.
 
-Before you run the script, you're going to need the current block height, which can be found at 
+Before you run the script, you're going to need the current block height for the Net your Node will run in, which can be found at 
 
 Testnet:
 https://explorer-testnet.zen-solutions.io/
