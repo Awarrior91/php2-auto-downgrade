@@ -1,4 +1,6 @@
 #!/bin/bash
+
+
 while getopts e:r:f: option
 do
  case "${option}"
@@ -10,6 +12,31 @@ do
 done
 USER=$USER
 sudo apt-get update
+sudo apt-get install ufw
+sudo ufw default allow outgoing
+sleep 1
+sudo ufw default deny incoming
+sleep 1
+sudo ufw allow ssh/tcp
+sleep 1
+sudo ufw limit ssh/tcp
+sleep 1
+sudo ufw allow http/tcp
+sleep 1
+sudo ufw allow https/tcp
+sleep 1
+sudo ufw allow 9033/tcp
+sleep 1
+sudo ufw allow 19033/tcp
+sleep 1
+sudo ufw logging on
+sleep 1
+sudo ufw enable
+sleep 1
+sudo apt -y install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+sudo apt -y install rkhunter
 sudo apt -y install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python zlib1g-dev wget bsdmainutils automake
 sudo apt-get install pwgen screen
 mkdir ~/zencash
