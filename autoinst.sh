@@ -1,10 +1,11 @@
 #!/bin/bash
 
 
-while getopts e:r:f: option
+while getopts e:r:f:t: option
 do
  case "${option}"
  in
+ t) TNET=${OPTARG};;
  e) EMAIL=${OPTARG};;
  r) REGION=${OPTARG};;
  f) FQDN=$OPTARG;;
@@ -66,9 +67,11 @@ daemon=1
 listen=1
 txindex=1
 logtimestamps=1
-### testnet config
-testnet=1
 EOF
+if $TNET='1'
+do
+echo 'testnet=1' >> ~/.zen/zen.conf
+done
 
 echo $FQDN
 sudo ~/.acme.sh/acme.sh --issue --standalone -d $FQDN
