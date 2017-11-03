@@ -1,5 +1,5 @@
 # seczennode-automate-install
-
+# Ubuntu 16.04.03 LTS
 # This is still in testing
 # Dont run this as root!
 
