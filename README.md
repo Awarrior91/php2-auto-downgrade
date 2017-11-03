@@ -53,13 +53,6 @@ When you got those, run the script like this:
 
 ./autoinst.sh -e YOUREMAILADDRESS -f DOMAINNAME -r REGIONCODE -t 1
 
-# After it's done
- 
-Run 'screen -S tracker'. Then 'cd ~/zencash/secnodetracker' and then 'node app.js'.
-
-To exit the screen (always do it this way) use 'CTRL + A + D'.
-
-To check on the tracker, type 'screen -R tracker'.
 
 
 
