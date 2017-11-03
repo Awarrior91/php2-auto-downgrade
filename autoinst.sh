@@ -82,7 +82,7 @@ tlskeypath=/home/$USER/.acme.sh/$FQDN/$FQDN.key
 EOF
 sudo cp /home/$USER/.acme.sh/$FQDN/ca.cer /usr/share/ca-certificates/ca.crt
 zend
-sleep 8
+sleep 15
 zen-cli z_getnewaddress
 sudo apt -y install npm
 sudo npm install -g n
