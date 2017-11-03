@@ -1,12 +1,10 @@
 #!/bin/bash
-while getopts e:t:r:b:f: option
+while getopts e:r:f: option
 do
  case "${option}"
  in
  e) EMAIL=${OPTARG};;
-# t) TADDR=${OPTARG};;
  r) REGION=${OPTARG};;
- b) BLCKHGHT=${OPTARG};;
  f) FQDN=$OPTARG;;
  esac
 done
@@ -24,15 +22,7 @@ sudo cp ~/zencash/zen/src/zend /usr/bin/
 sudo cp ~/zencash/zen/src/zen-cli /usr/bin/
 zend
 sleep 10
-#while $(zen-cli getinfo | grep -oP '(?<="blocks": )[0-9]+')>$BLCKHGHT
-#do
-# sleep 60
-#done
 zen-cli stop
-#cd ~/.zen
-#rm zen.conf
-#cd testnet3
-#rm wallet.dat
 sudo apt install socat
 cd
 git clone https://github.com/Neilpang/acme.sh.git
