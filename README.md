@@ -18,7 +18,7 @@ na for North America
 sea for Southeast Asia
 
 
-When you got those, run the script as follows:
+When you got those, run the script like this:
 
 ./autoinst.sh -e YOUREMAILADDRESS -f DOMAINNAME -r REGIONCODE 
 
