@@ -22,6 +22,10 @@ You need a fully qualified domain name.
 
 # The arguments
 
+-t #
+
+If you want to set up your node in Testnet, put 1 for #, if you want to run your node in Mainnet put 0 for #
+
 -e YOUREMAILADDRESS
 
 Your E-Mail so that the tracking server can send you alerts about downtimes
@@ -46,7 +50,7 @@ sea for Southeast Asia
 
 When you got those, run the script like this:
 
-./autoinst.sh -e YOUREMAILADDRESS -f DOMAINNAME -r REGIONCODE
+./autoinst.sh -e YOUREMAILADDRESS -f DOMAINNAME -r REGIONCODE -t 1
 
 # After it's done
  
