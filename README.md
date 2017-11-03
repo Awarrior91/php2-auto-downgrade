@@ -23,3 +23,6 @@ When you got those, run the script like this:
 ./autoinst.sh -e YOUREMAILADDRESS -f DOMAINNAME -r REGIONCODE 
 
 
+
+Donations appreciated :)
+znkXFdS6MVZFxiqoytcGi29J75jzwMtKH1B
