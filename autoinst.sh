@@ -70,18 +70,14 @@ cd ~/zencash
 git clone https://github.com/ZencashOfficial/secnodetracker.git
 cd secnodetracker
 npm install
- #rm -r ~/zencash/secnodetracker/config/*
-mkdir ~/zencash/secnodetracker/config
-cd ~/zencash/secnodetracker/config
 TADDR=$(zen-cli getnewaddress)
-echo $EMAIL > email
-echo $TADDR > stakeaddr
-echo $FQDN > fqdn
-echo $REGION > region
 cd ..
-node setup.js
 sudo dpkg-reconfigure ca-certificates
 zen-cli stop
-wait 5
+sleep 10
 zend
-
+echo $EMAIL
+echo $TADDR
+echo $FQDN
+echo $REGION
+node setup.js
