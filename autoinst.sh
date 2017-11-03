@@ -23,10 +23,11 @@ cd zen
 sudo cp ~/zencash/zen/src/zend /usr/bin/
 sudo cp ~/zencash/zen/src/zen-cli /usr/bin/
 zend
-while $(zen-cli getinfo | grep -oP '(?<="blocks": )[0-9]+')>$BLCKHGHT
-do
- wait 60
-done
+sleep 10
+#while $(zen-cli getinfo | grep -oP '(?<="blocks": )[0-9]+')>$BLCKHGHT
+#do
+# sleep 60
+#done
 zen-cli stop
 #cd ~/.zen
 #rm zen.conf
