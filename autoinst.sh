@@ -65,6 +65,7 @@ sudo dpkg-reconfigure ca-certificates
 zen-cli stop
 sleep 10
 zend
+echo "Copy+Paste for the super lazy (me)!"
 echo $EMAIL
 echo $TADDR
 echo $FQDN
