@@ -102,6 +102,62 @@ echo $TADDR
 echo $FQDN
 echo $REGION
 node setup.js
-echo "After setup.js completed, run 'screen -S tracker'. Then 'cd ~/zencash/secnodetracker' and then 'node app.js'"
-echo "To exit the screen (always do it this way) use 'CTRL + A + D'."
-echo "To check on the tracker, type 'screen -R tracker'."
+# echo "After setup.js completed, run 'screen -S tracker'. Then 'cd ~/zencash/secnodetracker' and then 'node app.js'"
+# echo "To exit the screen (always do it this way) use 'CTRL + A + D'."
+# echo "To check on the tracker, type 'screen -R tracker'."
+echo "Registering the node, please wait."
+node app.js
+sleep 10
+killall node
+sudo npm install pm2 -g
+pm2 start app.js --name securenodetracker
+pm2 startup | grep sudo | sh -
+sudo apt install monit
+echo <<EOF > ~/zen_node.sh
+#!/bin/bash
+
+PID_FILE='/home/$USER/.zen/zen_node.pid'
+
+start() {
+       touch $PID_FILE
+        eval "/bin/su $USER -c '/usr/bin/zend 2>&1 >> /dev/null'"
+       PID=$(ps aux | grep zend | grep -v grep | awk '{print $2}')
+       echo "Starting zend with PID $PID"
+       echo $PID > $PID_FILE
+}
+stop () {
+       pkill zend
+       rm $PID_FILE
+       echo "Stopping zend"
+}
+
+case $1 in
+    start)
+       start
+       ;;
+    stop)  
+       stop
+       ;;
+     *)  
+       echo "usage: zend {start|stop}" ;;
+ esac
+ exit 0
+EOF
+sudo chmod u+x ~/zen_node.sh
+sudo chown $USER:$USER /etc/monit/monitrc
+sudo cat <<EOF >> /etc/monit/monitrc   
+### added on setup for zend
+set httpd port 2812
+use address localhost # only accept connection from localhost
+allow localhost # allow localhost to connect to the server
+#
+### zend process control
+check process zend with pidfile /home/$USER/.zen/zen_node.pid
+start program = "/home/$USER/zen_node.sh start" with timeout 60 seconds
+stop program = "/home/$USER/zen_node.sh stop"
+EOF
+sudo chown root:root /etc/monit/monitrc
+sudo monit reload
+
+
+
