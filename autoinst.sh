@@ -116,13 +116,16 @@ sudo chown root:root /etc/monit/monitrc
 sudo monit reload
 sudo monit start zend
 echo "Copy+Paste for the super lazy (me)!"
+TADDR=$(zen-cli getnewaddress)
+ZADDR=$(zen-cli z_getnewaddress)
 echo $EMAIL
 echo $TADDR
 echo $FQDN
 echo $REGION
+echo $ZADDR
 cd ~/zencash/secnodetracker/
 node setup.js
-echo "After you sent run this command 'pm2 start app.js --name securenodetracker"
+echo "After you sent the needed Zen to the addresses, run this command 'pm2 start app.js --name securenodetracker"
 echo "Then run this 'pm2 startup | grep sudo | sh -'"
 echo "Then 'pm2 save'"
 echo "To check if everything works fine, run 'pm2 logs securenodetracker'"
