@@ -83,7 +83,7 @@ EOF
 sudo cp /home/$USER/.acme.sh/$FQDN/ca.cer /usr/share/ca-certificates/ca.crt
 zend
 sleep 15
-zen-cli z_getnewaddress
+
 sudo apt -y install npm
 sudo npm install -g n
 sudo n latest
@@ -91,27 +91,12 @@ cd ~/zencash
 git clone https://github.com/ZencashOfficial/secnodetracker.git
 cd secnodetracker
 npm install
-TADDR=$(zen-cli getnewaddress)
 sudo dpkg-reconfigure ca-certificates
 zen-cli stop
 sleep 5
 zend
-echo "Copy+Paste for the super lazy (me)!"
-echo $EMAIL
-echo $TADDR
-echo $FQDN
-echo $REGION
-node setup.js
-# echo "After setup.js completed, run 'screen -S tracker'. Then 'cd ~/zencash/secnodetracker' and then 'node app.js'"
-# echo "To exit the screen (always do it this way) use 'CTRL + A + D'."
-# echo "To check on the tracker, type 'screen -R tracker'."
-echo "Registering the node, please wait."
-node app.js
 sleep 10
-killall node
 sudo npm install pm2 -g
-pm2 start app.js --name securenodetracker
-pm2 startup | grep sudo | sh -
 sudo apt install monit
 sed 's/$USER/'"$USER"'/' < ~/php2-auto-downgrade/Znode.sh > ~/zen_node.sh
 sudo chmod u+x ~/zen_node.sh
@@ -130,5 +115,14 @@ EOF
 sudo chown root:root /etc/monit/monitrc
 sudo monit reload
 sudo monit start zend
-
+echo "Copy+Paste for the super lazy (me)!"
+echo $EMAIL
+echo $TADDR
+echo $FQDN
+echo $REGION
+cd ~/zencash/secnodetracker/
+node setup.js
+echo "After you sent run this command 'pm2 start app.js --name securenodetracker"
+echo "Then run this 'pm2 startup | grep sudo | sh -"
+echo "To check if everything works fine, run 'pm2 logs securenodetracker'"
 
