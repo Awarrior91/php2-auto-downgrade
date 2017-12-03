@@ -3,7 +3,7 @@ while getopts e:r:f:t: option
 do
  case "${option}"
  in
- t) TNET=${OPTARG};;
+ t) TADDR=${OPTARG};;
  e) EMAIL=${OPTARG};;
  r) REGION=${OPTARG};;
  f) FQDN=$OPTARG;;
@@ -25,11 +25,6 @@ sleep 1
 sudo ufw allow https/tcp
 sleep 1
 sudo ufw allow 9033/tcp
-sleep 1
-if [ $TNET -eq 1 ]
- then
-sudo ufw allow 19033/tcp
-fi
 sleep 1
 sudo ufw logging on
 sleep 1
@@ -69,11 +64,6 @@ listen=1
 txindex=1
 logtimestamps=1
 EOF
-if [ $TNET -eq 1 ]
- then
-echo 'testnet=1' >> ~/.zen/zen.conf
-fi
-
 echo $FQDN
 sudo ~/.acme.sh/acme.sh --issue --standalone -d $FQDN
 cat <<EOF >> ~/.zen/zen.conf
@@ -83,7 +73,6 @@ EOF
 sudo cp /home/$USER/.acme.sh/$FQDN/ca.cer /usr/share/ca-certificates/ca.crt
 zend
 sleep 15
-
 sudo apt -y install npm
 sudo npm install -g n
 sudo n latest
@@ -116,12 +105,11 @@ sudo chown root:root /etc/monit/monitrc
 sudo monit reload
 sudo monit start zend
 echo "Copy+Paste for the super lazy (me)!"
-TADDR=$(zen-cli getnewaddress)
 ZADDR=$(zen-cli z_getnewaddress)
-echo $EMAIL
-echo $TADDR
-echo $FQDN
-echo $REGION
+echo -n $EMAIL > ~/zennode/secnodetracker/config/email
+echo -n $TADDR > ~/zennode/secnodetracker/config/stakeaddr
+echo -n $FQDN > ~/zennode/secnodetracker/config/fqdn
+echo -n $REGION > ~/zennode/secnodetracker/config/region
 echo $ZADDR
 cd ~/zencash/secnodetracker/
 node setup.js
